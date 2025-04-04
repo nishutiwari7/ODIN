@@ -6,7 +6,7 @@ interface TextOptionsProps {
   onSelectOption: (option: string, response: string) => void;
 }
 
-const API_BASE_URL = 'http://127.0.0.1:8000/api';
+const API_BASE_URL = 'https://threat-production.up.railway.app/api';
 
 export default function TextOptions({ onClose, onSelectOption }: TextOptionsProps) {
   const options = [

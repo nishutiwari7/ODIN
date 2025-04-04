@@ -71,7 +71,7 @@ export default function DarkWebOptions({ onClose }: DarkWebOptionsProps) {
   useEffect(() => {
     const checkTorStatus = async () => {
       try {
-        const res = await fetch("http://localhost:8000/api/tor-status/");
+        const res = await fetch("https://threat-production.up.railway.app/api/tor-status/");
         const data = await res.json();
         setTorStatus(data);
       } catch (err) {
@@ -89,7 +89,7 @@ export default function DarkWebOptions({ onClose }: DarkWebOptionsProps) {
     setResponse(null);
   
     try {
-      const endpoint = "http://localhost:8000/api/dark-web/";
+      const endpoint = "https://threat-production.up.railway.app/api/dark-web/";
       const formData = new URLSearchParams();
       formData.append("action", activeTab);
       

@@ -16,7 +16,7 @@ interface DownloadProgress {
   [key: string]: number; // -1 = failed, 0-99 = in progress, 100 = completed
 }
 
-const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE_URL = "https://threat-production.up.railway.app";
 
 export default function ImageOptions({ onClose, onSelectImage }: ImageOptionsProps) {
   const [images, setImages] = useState<string[]>([]);

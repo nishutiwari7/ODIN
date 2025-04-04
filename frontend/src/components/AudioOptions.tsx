@@ -76,7 +76,7 @@ export default function AudioOptions({ onClose }: AudioOptionsProps) {
     try {
       if (activeOption === "text") {
         // Handle text translation
-        const response = await fetch("http://127.0.0.1:8000/api/translate-text/", {
+        const response = await fetch("https://threat-production.up.railway.app/api/translate-text/", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -97,7 +97,7 @@ export default function AudioOptions({ onClose }: AudioOptionsProps) {
         formData.append("audio_file", audioBlob!, "audio.wav");
         formData.append("target_language", targetLanguage);
 
-        const response = await fetch("http://127.0.0.1:8000/api/audio-process/", {
+        const response = await fetch("https://threat-production.up.railway.app/api/audio-process/", {
           method: "POST",
           body: formData,
         });

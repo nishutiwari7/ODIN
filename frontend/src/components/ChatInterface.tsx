@@ -54,7 +54,7 @@ export default function ChatInterface() {
         }
 
         const response = await fetch(
-          `http://localhost:8000/api/check-access/?user_id=${userId}`
+          `https://threat-production.up.railway.app/api/check-access/?user_id=${userId}`
         );
         const data = await response.json();
         
