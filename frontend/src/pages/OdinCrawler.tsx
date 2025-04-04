@@ -50,9 +50,8 @@ const OdinCrawler: React.FC = () => {
         const response = await fetch(
           `https://threat-production.up.railway.app/api/crawl/check-access/?user_id=${userId}`
         );
-
         const data = await response.json();
-        console.log(data)
+        
         setUserStatus({
           hasAccess: data.access,
           isTrial: data.is_trial,
@@ -100,8 +99,8 @@ const OdinCrawler: React.FC = () => {
 
       const razorpayLoaded = await loadRazorpayScript();
       if (!razorpayLoaded) throw new Error("Payment gateway failed to load");
-      console.log()
-      const response = await fetch("https://threat-production.up.railway.app/api/subscription/create/", {
+
+      const response = await fetch("http://127.0.0.1:8000/api/subscription/create/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
@@ -170,7 +169,7 @@ const OdinCrawler: React.FC = () => {
       if (daysLeft > 0) return `Your trial ends in ${daysLeft} day(s)`;
       return "Your trial has expired";
     }
-    return "Ended";
+    return "";
   };
 
   const visibleLinks = userStatus.hasAccess
@@ -272,12 +271,12 @@ const OdinCrawler: React.FC = () => {
               : "Subscribe to unlock Odin Crawler"}
           </p>
           <button
-  onClick={() => window.location.href = "https://rzp.io/rzp/Qli0K4kY"}
-  className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full transition"
-  disabled={processingSubscription}
->
-  {processingSubscription ? "Processing..." : "Subscribe Now"}
-</button>
+            onClick={handlePayment}
+            className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full transition"
+            disabled={processingSubscription}
+          >
+            {processingSubscription ? "Processing..." : "Subscribe Now"}
+          </button>
         </div>
       )}
 
