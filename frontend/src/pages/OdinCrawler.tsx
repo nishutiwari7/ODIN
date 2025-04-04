@@ -48,7 +48,7 @@ const OdinCrawler: React.FC = () => {
         if (!userId) return;
 
         const response = await fetch(
-          `https://threat-production.up.railway.app/api/crawl/check-access/?user_id=${userId}`
+          `http://127.0.0.1:8000/api/crawl/check-access/?user_id=${userId}`
         );
         const data = await response.json();
         
@@ -143,7 +143,7 @@ const OdinCrawler: React.FC = () => {
         throw new Error("Please enter a keyword or URL");
       }
 
-      const response = await fetch("https://threat-production.up.railway.app/api/crawl/", {
+      const response = await fetch("http://127.0.0.1:8000/api/crawl/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestBody),
